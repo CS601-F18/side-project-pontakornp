@@ -7,7 +7,7 @@ Side Project - Stock Data Web Application Using Web Scraping from NADAQ's site
 2. Create a database to store those data scraped.
 3. Develop a web application to display stocks' opening/closing price over time in graphs and
 other fields in tables.
-20 x 90 x 19
+
 ## Technologies Use
 
 Scrape data - Python
