@@ -5,8 +5,7 @@ Side Project - NASDAQ Tech Companies Stocks Web Application
 
 1. Scrape specific fields of 20 tech companies stock information starting from January 1 2018 to most recent available data.
 2. Create a database to store those data scraped.
-3. Develop a web application to display stocks' opening/closing price over time in graphs and
-other fields in tables.
+3. Develop a web application to display stocks open, high, low, close price over time in 2 different charts.
 
 ## Technologies Use
 
