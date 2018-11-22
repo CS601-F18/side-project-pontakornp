@@ -49,12 +49,15 @@ other fields in tables.
 6. Low Price
 7. Volume
 
-## Sample Graph
+## Sample Chart
 
-1. Candlestick Graph - showing open, high, low, close price for a period
-![candlestick]("https://codepen.io/plotly/embed/OpLmBe/?height=500&theme-id=15263&default-tab=result")
-2. Time Series Graph - showing high, low price for a period
+1. Candlestick chart - showing open, high, low, close price for a period
+![candlestick]("https://codepen.io/plotly/embed/NvazKR/?height=500&theme-id=15263&default-tab=result")
+Source: https://plot.ly/javascript/candlestick-charts/
+
+2. Time Series chart - showing high, low price for a period
 ![timeseries]("https://codepen.io/plotly/embed/NvazKR/?height=500&theme-id=15263&default-tab=result")
+Source: https://plot.ly/javascript/time-series/
 
 ## Features
 
