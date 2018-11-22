@@ -52,11 +52,11 @@ other fields in tables.
 ## Sample Chart
 
 1. Candlestick chart - showing open, high, low, close price for a period
-![candlestick]("https://codepen.io/plotly/embed/NvazKR/?height=500&theme-id=15263&default-tab=result")
+![candlestick]("https://plot.ly/~RPlotBot/4305/basic-candlestick-chart.png")
 Source: https://plot.ly/javascript/candlestick-charts/
 
 2. Time Series chart - showing high, low price for a period
-![timeseries]("https://codepen.io/plotly/embed/NvazKR/?height=500&theme-id=15263&default-tab=result")
+![timeseries]("https://plot.ly/~priyatharsan/18/time-series-with-rangeslider.png")
 Source: https://plot.ly/javascript/time-series/
 
 ## Features
