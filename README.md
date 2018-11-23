@@ -9,7 +9,7 @@ Side Project - NASDAQ Tech Companies Stocks Web Application
 
 ## Technologies Use
 
-- Extract data - Quandl (Python library) https://www.quandl.com/tools/python
+- Extract data - iexfinance (Python library) https://pypi.org/project/iexfinance/
 - Develop web application - Python/Django
 - Display front-end interfaces - HTML, CSS, JavaScript/JQuery, plotly.js https://plot.ly/javascript/candlestick-charts/
 - Manage database - SQL/MySQL
