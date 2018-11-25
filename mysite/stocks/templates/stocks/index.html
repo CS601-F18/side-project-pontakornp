@@ -7,14 +7,30 @@
 		<link href="{% static 'stocks/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"/>
 	</head>
 	<body>
-		<h1>This is a Heading</h1>
-		<p>This is a paragraph.</p>
+<!-- 		<h1>This is a Heading</h1>
+		<p>This is a paragraph.</p> -->
 		<div id="plotly-div"></div>
+
+		<!-- <h1>{{ stock_data.symbol }}</h1> -->
+
+		{% for data in stock_data %}
+	        <li>{{ data.symbol }}</li>
+	        <li>{{ data.open_price }}</li>
+	        <li>{{ data.close_price }}</li>
+	    {% endfor %}
 		<!-- script for this page -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="{% static 'stocks/bootstrap/js/bootstrap.min.js' %}"></script>
 		<script src="{% static 'stocks/js/plotly-latest.min.js' %}"></script>
-		<script src="{% static 'stocks/js/index.js' %}"></script>
+		<script type="text/javascript">
+		    var data_from_django = '{{ my_data }}';
+		    data_from_django = data_from_django.replace(/&quot;/g,'"');
+		    console.log(data_from_django);
+		    var data = JSON.parse(data_from_django);
+
+		</script>
+		<script src="{% static 'stocks/js/index2.js' %}"></script>
+		
 		<!-- <script src="../js/plotly-latest.min.js"></script> -->
 		<!-- <script src="{% static 'stocks/js/index.js' %}"></script> -->
 	</body>

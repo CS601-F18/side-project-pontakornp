@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from django.shortcuts import render
+import json
+from django.core import serializers
 from .models import Stock, StockData
 
 from iexfinance import get_historical_data
@@ -34,5 +37,25 @@ def getStock(request):
 	    StockData(**vals) for vals in df.to_dict('records')
 
 	)
-	return HttpResponse("Hellooooo")
 	# return HttpResponse(template.render(df.to_dict(), request))
+	return HttpResponse("Hellooooo")
+
+def showCandleStickCharts(request):
+	stock_data = StockData.objects.filter(symbol='AAPL')
+	template = loader.get_template('stocks/index.html')
+	# context = {
+	# 	'stock_data': stock_data,
+	# }
+	# js_data = json.dumps(context)
+	# my_data = {
+	# 	'my_data': js_data,
+	# 	'stock_data': stock_data,
+	# }
+	qs_json = serializers.serialize('json', stock_data)
+	context = {
+		'stock_data': stock_data,
+		'my_data': qs_json,
+	}
+	# print(stock_data.)
+	# return HttpResponse(template.render(context, request))
+	return render(request, 'stocks/index.html', context)
