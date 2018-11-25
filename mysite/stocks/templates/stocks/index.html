@@ -1,1 +1,21 @@
-<p>New File</p>
+{% load static %}
+
+<!DOCTYPE html/>
+<html>
+	<head>
+		<title>Page Title</title>
+		<link href="{% static 'stocks/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"/>
+	</head>
+	<body>
+		<h1>This is a Heading</h1>
+		<p>This is a paragraph.</p>
+		<div id="plotly-div"></div>
+		<!-- script for this page -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="{% static 'stocks/bootstrap/js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'stocks/js/plotly-latest.min.js' %}"></script>
+		<script src="{% static 'stocks/js/index.js' %}"></script>
+		<!-- <script src="../js/plotly-latest.min.js"></script> -->
+		<!-- <script src="{% static 'stocks/js/index.js' %}"></script> -->
+	</body>
+</html>
