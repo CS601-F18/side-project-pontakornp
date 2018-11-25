@@ -42,6 +42,7 @@ def getStock(request):
 
 def showCandleStickCharts(request):
 	stock_data = StockData.objects.filter(symbol='AAPL')
+	stock = Stock.objects.filter(symbol='AAPL')
 	template = loader.get_template('stocks/index.html')
 	# context = {
 	# 	'stock_data': stock_data,
@@ -53,8 +54,10 @@ def showCandleStickCharts(request):
 	# }
 	qs_json = serializers.serialize('json', stock_data)
 	context = {
+		'stock': stock,
 		'stock_data': stock_data,
 		'my_data': qs_json,
+
 	}
 	# print(stock_data.)
 	# return HttpResponse(template.render(context, request))

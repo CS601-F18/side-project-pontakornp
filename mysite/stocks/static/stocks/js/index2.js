@@ -13,8 +13,8 @@ for (var i = 0; i < data.length; i++){
 
 var maxdate = new Date(Math.max.apply(null, x));
 var mindate = new Date(Math.min.apply(null, x));
-var maxprice = Math.min.apply(null, low);
-var minprice = Math.max.apply(null, high);
+var maxprice = Math.max.apply(null, low);
+var minprice = Math.min.apply(null, high);
 console.log(maxdate);
 console.log(mindate);
 var trace1 = {
@@ -52,7 +52,7 @@ var layout = {
   xaxis: {
     autorange: true, 
     domain: [0, 1], 
-    range: [mindate, mindate], 
+    range: [mindate, maxdate], 
     rangeslider: {range: [mindate, maxdate]}, 
     title: 'Date', 
     type: 'date'
