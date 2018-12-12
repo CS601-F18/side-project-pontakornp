@@ -1,3 +1,8 @@
+/**
+  use plotly.js library to create candlesticks graphs showing
+  open price, high price, low price, and close price for each day
+  from beginning of the year to most recent
+**/
 var trace1 = {
   type: "scatter",
   mode: "lines",

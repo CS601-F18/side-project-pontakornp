@@ -1,3 +1,6 @@
+<!-- Html page to view stock data in times series and candle sticks graphs -->
+<!-- Use Django syntax to loop through data to list out in nav bar -->
+
 {% load static %}
 
 <!DOCTYPE html/>
@@ -18,19 +21,15 @@
 	            <ul class="nav flex-column">
 	              {% for data in all_stocks %}
 	              <li class="nav-item">
-	                <!-- <a data-stock-id="{{ data.stock_id }}" class="nav-link {% if forloop.first %}active{% endif %} stock" href="{% url 'index' %}?stock_id={{ data.stock_id }}"> -->
 	                <a data-stock-id="{{ data.stock_id }}" class="nav-link {% if stock_id == data.stock_id %}active{% endif %} stock" href="{% url 'index' %}?stock_id={{ data.stock_id }}">
 	                  <span data-feather="feather"></span>
-	                  {{ data.symbol }} 
-	                  <!-- <span class="sr-only">{% if forloop.first %}(current){% endif %}</span> -->
-	                  <!-- <span class="sr-only">{% if forloop.first %}(current){% endif %}</span> -->
+	                  {{ data.symbol }}
 	                </a>
 	              </li>
 	              {% endfor %}	            
 	            </ul>        
 	          </div>
 	        </nav>
-
 	        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 	          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 				<h1 class="h2">{{ stock_qs.symbol }}</h1>
@@ -42,46 +41,17 @@
 	      </div>
 	    </div>
 	    {% csrf_token %}
-		<!-- JavaScript section -->
+		<!-- start JavaScript section -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="{% static 'stocks/bootstrap/js/bootstrap.min.js' %}"></script>
 		<script src="{% static 'stocks/js/plotly-latest.min.js' %}"></script>
 		<script type="text/javascript">
+			// convert stock data in json format to javascript variable
 		    var stock_json = '{{ stock_json }}'.replace(/&quot;/g,'"');
-		    var data = JSON.parse(stock_json);
-		    var x = [];
-			var close = [];
-			var high = [];
-			var low = [];
-			var open = [];
-			for (var i = 0; i < data.length; i++){
-			    x.push(new Date(data[i].fields.date));
-			    open.push(data[i].fields.open_price);
-			    close.push(data[i].fields.close_price);
-			    high.push(data[i].fields.high_price);
-			    low.push(data[i].fields.low_price);
-			}
-			var maxdate = new Date(Math.max.apply(null, x));
-			var mindate = new Date(Math.min.apply(null, x));
-			var maxprice = Math.max.apply(null, low);
-			var minprice = Math.min.apply(null, high);
-			$('.stock').on('click', function(e) {
-			    var stock_id = $(this).data('stock-id');
-			    var url = "{% url 'index' %}";
-			    // alert('I\'m about to query stock id: [' + stock_id + ']' + url);
-			    $.ajax({
-	                 type:"GET",
-	                 url:"{% url 'index' %}",
-	                 data: {
-	                        'stock_id': stock_id
-	                        },
-	                 success: function(){
-	                     console.log('AJAX success');
-	                 }
-            	});
-			});
 		</script>
+		<script src="{% static 'stocks/js/index.js' %}"></script>
 		<script src="{% static 'stocks/js/candlestick.js' %}"></script>
 		<script src="{% static 'stocks/js/timeseries.js' %}"></script>
+		<!-- end Javascript section -->
 	</body>
 </html>

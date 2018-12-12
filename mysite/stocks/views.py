@@ -11,6 +11,7 @@ from datetime import datetime, date
 
 import pandas as pd
 
+# show dashboard with stock data in times series and candle sticks graphs
 def show_dashboard(request):
 	all_stocks = Stock.objects.all()
 	if request.method == 'GET':
@@ -22,7 +23,7 @@ def show_dashboard(request):
 			stock_qs = Stock.objects.filter(stock_id=stock_id)[0]
 			stock_data_qs = StockData.objects.filter(stock_id=stock_id)
 	else:
-		return HttpResponse("Please try again with GET request")
+		return HttpResponseNotAllowed("Please try again with GET request")
 
 	stock_json = serializers.serialize('json', stock_data_qs)
 	context = {
@@ -33,6 +34,8 @@ def show_dashboard(request):
 	}
 	return render(request, 'stocks/index.html', context)
 
+# for extracting stock data open price, high price, low price, and close price 
+# from iexfinance library
 def extract_stock_data(request):
 	start = datetime(2018, 11, 22)
 	end = datetime.today()
