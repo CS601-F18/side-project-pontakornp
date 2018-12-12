@@ -37,7 +37,22 @@ var layout = {
     range: [mindate, maxdate], 
     rangeslider: {range: [mindate, maxdate]}, 
     title: 'Date', 
-    type: 'date'
+    type: 'date',
+    rangeselector: {buttons: [
+        {
+          count: 1,
+          label: '1m',
+          step: 'month',
+          stepmode: 'backward'
+        },
+        {
+          count: 6,
+          label: '6m',
+          step: 'month',
+          stepmode: 'backward'
+        },
+        {step: 'all'}
+      ]},
   }, 
   yaxis: {
     autorange: true, 

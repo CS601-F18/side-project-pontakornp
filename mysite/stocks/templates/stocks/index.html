@@ -3,13 +3,13 @@
 <!DOCTYPE html/>
 <html>
 	<head>
-		<title>Page Title</title>
+		<title>Nasdaq Tech Stocks</title>
 		<link href="{% static 'stocks/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"/>
 		<link href="{% static 'stocks/css/dashboard.css' %}" rel="stylesheet"/>
 	</head>
 	<body>
 		<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-	      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Nasdaq</a>
+	      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Nasdaq Stocks</a>
 	    </nav>
 	    <div class="container-fluid">
 	      <div class="row">
@@ -18,11 +18,12 @@
 	            <ul class="nav flex-column">
 	              {% for data in all_stocks %}
 	              <li class="nav-item">
-	                <a data-stock-id="{{ data.stock_id }}" class="nav-link {% if forloop.first %}active{% endif %} stock" href="#">
-	                {% csrf_token %}
+	                <!-- <a data-stock-id="{{ data.stock_id }}" class="nav-link {% if forloop.first %}active{% endif %} stock" href="{% url 'index' %}?stock_id={{ data.stock_id }}"> -->
+	                <a data-stock-id="{{ data.stock_id }}" class="nav-link {% if stock_id == data.stock_id %}active{% endif %} stock" href="{% url 'index' %}?stock_id={{ data.stock_id }}">
 	                  <span data-feather="feather"></span>
 	                  {{ data.symbol }} 
-	                  <span class="sr-only">{% if forloop.first %}(current){% endif %}</span>
+	                  <!-- <span class="sr-only">{% if forloop.first %}(current){% endif %}</span> -->
+	                  <!-- <span class="sr-only">{% if forloop.first %}(current){% endif %}</span> -->
 	                </a>
 	              </li>
 	              {% endfor %}	            
@@ -40,6 +41,7 @@
 	        </main>
 	      </div>
 	    </div>
+	    {% csrf_token %}
 		<!-- JavaScript section -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="{% static 'stocks/bootstrap/js/bootstrap.min.js' %}"></script>
@@ -65,9 +67,10 @@
 			var minprice = Math.min.apply(null, high);
 			$('.stock').on('click', function(e) {
 			    var stock_id = $(this).data('stock-id');
-			    alert('I\'m about to query stock id: [' + stock_id + ']');
+			    var url = "{% url 'index' %}";
+			    // alert('I\'m about to query stock id: [' + stock_id + ']' + url);
 			    $.ajax({
-	                 type:"POST",
+	                 type:"GET",
 	                 url:"{% url 'index' %}",
 	                 data: {
 	                        'stock_id': stock_id
