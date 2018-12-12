@@ -9,8 +9,6 @@ from .models import Stock, StockData
 from iexfinance import get_historical_data
 from datetime import datetime, date
 
-from sqlalchemy import create_engine
-
 import pandas as pd
 
 def show_dashboard(request):
