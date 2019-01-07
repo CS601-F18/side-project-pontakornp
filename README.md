@@ -1,5 +1,5 @@
-Side Project - NASDAQ Tech Companies Stocks Web Application
-===========================================================
+NASDAQ Tech Companies Stocks Web Application
+============================================
 
 ## Specifications
 
